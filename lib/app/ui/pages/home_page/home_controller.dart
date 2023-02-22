@@ -45,6 +45,8 @@ class HomeController extends GetxController {
 
   bool type = false;
 
+  RxBool loading = true.obs;
+
   CategoryData? get selectedCategory =>
       initialCategories.firstWhereOrNull((element) => element.isSelected);
 
@@ -77,18 +79,6 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
     loadConfigurationApp();
-  }
-
-  Future<void> loadingData() async {
-    Get.dialog(
-        Center(
-            child: CircularProgressIndicator(
-          color: selectedCategory?.color?.withOpacity(0.5) ??
-              ColorTheme.primaryTint,
-        )),
-        barrierDismissible: false,
-        useSafeArea: true,
-        barrierColor: ColorTheme.bgScaffold.withOpacity(0.1));
   }
 
   Future<void> onSearch() async {
@@ -161,39 +151,16 @@ class HomeController extends GetxController {
   }
 
   Future<void> loadConfigurationApp() async {
-    loadingData();
-    await onInitCategories();
+    loading.value = true;
+
     await getIndicadoresGlobales();
     await getUserCurrentLocation();
     await _configuracionService.getService();
     await getListaProyectos();
-    Get.back();
+    loading.value = false;
   }
 
   Future<void> getIndicadoresGlobales() async {
-    try {
-      // icon1 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_1.png',
-      // );
-      // icon2 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_2.png',
-      // );
-      // icon3 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_3.png',
-      // );
-      // icon5 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_5.png',
-      // );
-      // icon6 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_6.png',
-      // );
-      // icon7 = await MapHelper.getMarkerImageFromUrl(
-      //   '${prefs.imagesUrl}/resources/ikont-icons/icn_linea_de_negocio_7.png',
-      // );
-    } on Exception {
-      // TODO
-      print('No se cargaron las imagenes icono');
-    }
     final List<IndicadoresGlobales> indicadoresGlobales =
         await _indiGlobService.getIndicadoresGlobales();
 
@@ -318,15 +285,17 @@ class HomeController extends GetxController {
   }
 
   Future<void> getMarkers() async {
-    //TODO
-
     if (currentPageViewIndex != 0) {
       return;
     }
 
-    // loadingData();
-    // ignore: always_specify_types
+    // loading.value = true;
+
     final List<MapMarker> markers = [];
+    markers.clear();
+    if (listaProyectos.length > 25) {
+      loading.value = true;
+    }
     for (final VistaListaConsulta item in listaProyectos) {
       if (item.latitudproyecto != 0.0 && item.longitudproyecto != 0.0) {
         GlobalKey<State<StatefulWidget>> key = initialCategories
@@ -346,7 +315,7 @@ class HomeController extends GetxController {
             ),
           );
         } catch (e) {
-          print(e);
+          loading.value = false;
         }
       }
     }
@@ -415,7 +384,7 @@ class HomeController extends GetxController {
     final MapViewController map = Get.find<MapViewController>();
     map.goToCurrentPosition();
 
-    Get.back();
+    loading.value = false;
   }
 
   Future<void> updateMarkers([double? updatedZoom]) async {
@@ -491,66 +460,6 @@ class HomeController extends GetxController {
     update(<Object>['map_view']);
   }
 
-  Future<void> onInitCategories() async {
-    return;
-    // initialCategories = <CategoryData>[
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeAll,
-    //     color: ColorTheme.newButton1,
-    //     name: 'Todos',
-    //     height: 20,
-    //     width: 20,
-    //     isSelected: true,
-    //     codigoCategoria: 0,
-    //   ),
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeButton2,
-    //     color: ColorTheme.newButton2,
-    //     name: 'Conocimiento\ndel Riesgo',
-    //     width: 14.06,
-    //     height: 27.9,
-    //     isSelected: false,
-    //     codigoCategoria: 1,
-    //   ),
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeButton3,
-    //     color: ColorTheme.newButton3,
-    //     name: 'Manejo de\nDesastres',
-    //     width: 26,
-    //     height: 25,
-    //     isSelected: false,
-    //     codigoCategoria: 2,
-    //   ),
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeButton4,
-    //     color: ColorTheme.newButton4,
-    //     name: 'Todos somos\nPAZcifico',
-    //     width: 20,
-    //     height: 20,
-    //     isSelected: false,
-    //     codigoCategoria: 3,
-    //   ),
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeButton5,
-    //     color: ColorTheme.newButton5,
-    //     name: 'Reducción\ndel Riesgo',
-    //     width: 27,
-    //     height: 18,
-    //     isSelected: false,
-    //     codigoCategoria: 5,
-    //   ),
-    //   CategoryData(
-    //     image: Assets.assetsNewHomeButton6,
-    //     color: ColorTheme.newButton6,
-    //     name: 'San\nAndrés',
-    //     width: 24,
-    //     height: 32,
-    //     isSelected: false,
-    //     codigoCategoria: 7,
-    //   ),
-    // ];
-  }
-
   Future<void> updateMostly() async {
     update(<Object>['categories', 'indicators', 'lista_proyectos']);
     updateMap();
@@ -566,17 +475,19 @@ class HomeController extends GetxController {
   }
 
   Future<void> goToDetails(int? codigoProyecto) async {
-    loadingData();
+    loading.value = true;
     datoProyecto = await _datoProService.getService(
       codigoProyecto: codigoProyecto!,
       latitud: currentUserLocation.latitude,
       longitud: currentUserLocation.longitude,
     );
-    Get.back();
+
     if (datoProyecto == null) {
+      loading.value = false;
       return;
     }
-    Get.toNamed(AppRoutes.details, arguments: datoProyecto);
+    await Get.toNamed(AppRoutes.details, arguments: datoProyecto);
+    loading.value = false;
     return;
   }
 

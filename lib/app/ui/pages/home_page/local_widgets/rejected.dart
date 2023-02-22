@@ -1,8 +1,10 @@
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siente_app/app/ui/theme/color_theme.dart';
+
+import '../../../../assets/assets.dart';
 
 class ProyectContainerFigmaVersion extends StatelessWidget {
   const ProyectContainerFigmaVersion({
@@ -193,10 +195,10 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                   height: 56.sp,
                   width: 56.sp,
                   child: Center(
-                    child: Image.asset(
-                      'assets/new/home/right_arrow.png',
-                      height: 22.sp,
-                      width: 22.sp,
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                      size: 28.sp,
                     ),
                   ),
                 ),
@@ -224,12 +226,13 @@ class CircleAvatarImage extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
+    var size = 61.sp;
     return ClipRRect(
       borderRadius: BorderRadius.circular(100.sp),
       child: CachedNetworkImage(
         imageUrl: image,
-        width: 61.sp,
-        height: 61.sp,
+        width: size,
+        height: size,
         fit: BoxFit.cover,
         progressIndicatorBuilder: (
           BuildContext context,
@@ -237,11 +240,13 @@ class CircleAvatarImage extends StatelessWidget {
           DownloadProgress downloadProgress,
         ) =>
             Container(
-          width: 61.sp,
-          height: 61.sp,
-          color:
-              ColorTheme.primary.withOpacity(downloadProgress.progress ?? 0.01),
-        ),
+                color: Colors.transparent,
+                width: size,
+                height: size,
+                child: Image.asset(
+                  Assets.assetsNewLoginLoading2,
+                  fit: BoxFit.cover,
+                )),
         errorWidget: (BuildContext context, String url, dynamic error) => Icon(
           Icons.error,
           size: 32.sp,

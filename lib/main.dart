@@ -24,7 +24,7 @@ Future<void> main() async {
   await prefs.initPrefs();
   // HttpOverrides.global = MyHttpOverrides();
   DependencyInjection.init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // class MyHttpOverrides extends HttpOverrides {
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => GetMaterialApp(
         title: 'Siente',
         debugShowCheckedModeBanner: false,
-        home: SplashPage(),
+        home: const SplashPage(),
         theme: AppTheme.themeData,
         initialBinding: SplashBinding(),
         getPages: AppPages.pages,

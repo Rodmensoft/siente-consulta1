@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
 import 'package:siente_app/app/ui/theme/color_theme.dart';
 
+import '../../../../assets/assets.dart';
+
 class ProyectCard extends StatelessWidget {
   const ProyectCard({
     Key? key,
@@ -229,6 +231,7 @@ class CardTitleDistance extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
+    var size = 25.sp;
     return Container(
       color: color,
       height: 37.sp,
@@ -239,8 +242,8 @@ class CardTitleDistance extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             child: CachedNetworkImage(
               imageUrl: image,
-              width: 25.sp,
-              height: 25.sp,
+              width: size,
+              height: size,
               fit: BoxFit.cover,
               progressIndicatorBuilder: (
                 BuildContext context,
@@ -248,15 +251,13 @@ class CardTitleDistance extends StatelessWidget {
                 DownloadProgress downloadProgress,
               ) =>
                   Container(
-                color: Colors.transparent,
-                width: 25.sp,
-                height: 25.sp,
-                child: CircularProgressIndicator(
-                  color: ColorTheme.primaryTint,
-                  strokeWidth: 1.sp,
-                  value: downloadProgress.progress ?? 1.0,
-                ),
-              ),
+                      color: Colors.transparent,
+                      width: size,
+                      height: size,
+                      child: Image.asset(
+                        Assets.assetsNewLoginLoading2,
+                        fit: BoxFit.cover,
+                      )),
               errorWidget: (BuildContext context, String url, dynamic error) =>
                   Icon(
                 Icons.error,

@@ -1,10 +1,11 @@
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siente_app/app/assets/assets.dart';
+import 'package:siente_app/app/ui/theme/color_theme.dart';
 
 class ProjectInfoCard extends StatelessWidget {
   const ProjectInfoCard({
@@ -246,19 +247,22 @@ class CircleAvatarImage extends StatelessWidget {
                 DownloadProgress downloadProgress,
               ) =>
                   Container(
+                      color: Colors.transparent,
+                      width: size,
+                      height: size,
+                      child: Image.asset(
+                        Assets.assetsNewLoginLoading2,
+                        fit: BoxFit.cover,
+                      )),
+              errorWidget: (BuildContext context, String url, dynamic error) =>
+                  Container(
                 color: Colors.transparent,
                 width: size,
                 height: size,
-                child: CircularProgressIndicator(
-                  color: ColorTheme.primaryTint,
-                  strokeWidth: 8.sp,
-                  value: downloadProgress.progress ?? 1.0,
+                child: Image.asset(
+                  Assets.assetsNewLoginLoading2,
+                  fit: BoxFit.cover,
                 ),
-              ),
-              errorWidget: (BuildContext context, String url, dynamic error) =>
-                  Icon(
-                Icons.error,
-                size: 32.sp,
               ),
             ),
     );

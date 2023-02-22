@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+import 'package:siente_app/app/assets/assets.dart';
 import 'package:siente_app/app/data/models/sample_data.dart';
 import 'package:siente_app/app/ui/global_widgets/fadein_top_edge.dart';
 import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
@@ -86,63 +89,89 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ),
-                SafeArea(
+                Platform.isIOS
+                    ? const SafeArea(
+                        child: CustomBottomNavBar(),
+                      )
+                    : const CustomBottomNavBar(),
+              ],
+            ),
+            Obx(() {
+              bool loading = Get.find<HomeController>().loading.value;
+              return Positioned.fill(
+                child: Visibility(
+                  visible: loading,
                   child: Container(
-                    padding: EdgeInsets.only(top: 20.sp),
-                    color: Colors.white,
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.dashboard_sharp,
-                                size: 30.sp,
-                                color: ColorTheme.primaryTint,
-                              ),
-                              Text(
-                                'Dashboard',
-                                style: GoogleFonts.mulish(
-                                  fontSize: 12.sp,
-                                  color: ColorTheme.primaryTint,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: GetBuilder<HomeController>(
-                            builder: (_) {
-                              return InkWell(
-                                onTap: () => _.openLogoutDialog(),
-                                child: Column(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.logout_outlined,
-                                      size: 30.sp,
-                                      color: ColorTheme.medium,
-                                    ),
-                                    Text(
-                                      'Logout',
-                                      style: GoogleFonts.mulish(
-                                        fontSize: 12.sp,
-                                        color: ColorTheme.medium,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
+                    color: const Color(0xff39B49A),
+                    child: Center(
+                        child: Image.asset(Assets.assetsNewLoginLoading2)),
+                  ),
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomBottomNavBar extends StatelessWidget {
+  const CustomBottomNavBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 20.sp, bottom: 10.sp),
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                Icon(
+                  Icons.dashboard_sharp,
+                  size: 30.sp,
+                  color: ColorTheme.primaryTint,
+                ),
+                Text(
+                  'Dashboard',
+                  style: GoogleFonts.mulish(
+                    fontSize: 12.sp,
+                    color: ColorTheme.primaryTint,
                   ),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: GetBuilder<HomeController>(
+              builder: (_) {
+                return InkWell(
+                  onTap: () => _.openLogoutDialog(),
+                  child: Column(
+                    children: <Widget>[
+                      Icon(
+                        Icons.logout_outlined,
+                        size: 30.sp,
+                        color: ColorTheme.medium,
+                      ),
+                      Text(
+                        'Logout',
+                        style: GoogleFonts.mulish(
+                          fontSize: 12.sp,
+                          color: ColorTheme.medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -235,82 +264,88 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.47.r),
-            boxShadow: !data.isSelected
-                ? null
-                : [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10.r,
-                      offset: Offset(3.sp, 5.sp),
-                    ),
-                  ],
-          ),
-          height: 104.sp,
-          margin: EdgeInsets.only(
-            left: index == 0 ? 15.sp : 0,
-            right: 5.85.sp,
-            top: 5.sp,
-            bottom: 5.sp,
-          ),
-          width: 99.sp,
-          child: Material(
-            color: data.color,
-            child: InkWell(
-              onTap: onTap,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 13.sp),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100.r),
-                    child: Container(
-                      height: 45.28.sp,
-                      width: 50.28.sp,
-                      color: Colors.black.withOpacity(0.07),
-                      child: Center(
-                        child: Image.asset(
-                          data.image!,
-                          height: data.height!.sp,
-                          width: data.width!.sp,
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 2000),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(scale: animation, child: child);
+      },
+      key: ValueKey('$index $type'),
+      child: Column(
+        children: <Widget>[
+          Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.47.r),
+              boxShadow: !data.isSelected
+                  ? null
+                  : [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10.r,
+                        offset: Offset(3.sp, 5.sp),
+                      ),
+                    ],
+            ),
+            height: 104.sp,
+            margin: EdgeInsets.only(
+              left: index == 0 ? 15.sp : 0,
+              right: 5.85.sp,
+              top: 5.sp,
+              bottom: 5.sp,
+            ),
+            width: 99.sp,
+            child: Material(
+              color: data.color,
+              child: InkWell(
+                onTap: onTap,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 13.sp),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100.r),
+                      child: Container(
+                        height: 45.28.sp,
+                        width: 50.28.sp,
+                        color: Colors.black.withOpacity(0.07),
+                        child: Center(
+                          child: Image.asset(
+                            data.image!,
+                            height: data.height!.sp,
+                            width: data.width!.sp,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  if (type) SizedBox(height: 6.52.sp),
-                  if (!type) const Spacer(),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 32.85.sp,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: type ? Colors.transparent : Colors.white,
-                    ),
-                    child: Text(
-                      type
-                          ? data.nombreCamelCase
-                          : data.nombreCamelCase.toUpperCase(),
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.mulish(
-                        fontWeight: FontWeight.w700,
-                        color: type ? Colors.white : const Color(0xff666666),
-                        fontSize: type ? 11.72.sp : 12.sp,
+                    if (type) SizedBox(height: 6.52.sp),
+                    if (!type) const Spacer(),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 32.85.sp,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: type ? Colors.transparent : Colors.white,
+                      ),
+                      child: Text(
+                        type
+                            ? data.nombreCamelCase
+                            : data.nombreCamelCase.toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.mulish(
+                          fontWeight: FontWeight.w700,
+                          color: type ? Colors.white : const Color(0xff666666),
+                          fontSize: type ? 11.72.sp : 12.sp,
+                        ),
                       ),
                     ),
-                  ),
-                  if (type) SizedBox(height: 4.2.sp),
-                ],
+                    if (type) SizedBox(height: 4.2.sp),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        if (type) SelectedCategoryUnderline(data: data, index: index),
-      ],
+          if (type) SelectedCategoryUnderline(data: data, index: index),
+        ],
+      ),
     );
   }
 }

@@ -5,7 +5,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/route_manager.dart';
 import 'package:siente_app/app/data/models/datos_proyecto.dart';
 import 'package:siente_app/app/routes/app_routes.dart';
-import 'package:siente_app/app/ui/theme/color_theme.dart';
+
+import '../../../../../assets/assets.dart';
 
 class Imagenes extends StatelessWidget {
   const Imagenes({
@@ -52,13 +53,13 @@ class Imagenes extends StatelessWidget {
                     String url,
                     DownloadProgress downloadProgress,
                   ) =>
-                      Column(
-                    children: <Widget>[
-                      Container(
-                        color: ColorTheme.primaryTint
-                            .withOpacity(downloadProgress.progress ?? 1.0),
-                      ),
-                    ],
+                      Center(
+                    child: Container(
+                        color: Colors.transparent,
+                        child: Image.asset(
+                          Assets.assetsNewLoginLoading2,
+                          fit: BoxFit.cover,
+                        )),
                   ),
                   errorWidget:
                       (BuildContext context, String url, dynamic error) =>

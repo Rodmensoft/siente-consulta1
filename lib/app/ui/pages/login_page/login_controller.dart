@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:siente_app/app/data/services/auth_service.dart';
@@ -22,14 +23,13 @@ class LoginController extends GetxController {
   void onInit() {
     super.onInit();
     setInitData();
-    userCtrl.text = 'interkont@2';
-    passwordCtrl.text = 'Int4rkont*_22';
+    if (kDebugMode) {
+      userCtrl.text = 'interkont@2';
+      passwordCtrl.text = 'Int4rkont*_22';
+    }
   }
 
   Future<void> login() async {
-    userCtrl.text = 'interkont@2';
-    passwordCtrl.text = 'Int4rkont*_22';
-
     update(<Object>['failed_field']);
 
     failed = false;
