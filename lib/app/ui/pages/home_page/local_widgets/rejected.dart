@@ -59,17 +59,18 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                         Text(
                           title!,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.mulish(
-                            fontWeight: FontWeight.w700,
+                          maxLines: 2,
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w500,
                             fontSize: 18.sp,
                             color: Colors.white,
                           ),
                         ),
                         Text(
                           location!,
-                          style: GoogleFonts.mulish(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14.sp,
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15.sp,
                             color: Colors.white,
                           ),
                         ),
@@ -87,9 +88,9 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'Avance',
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
-                          fontSize: 15.sp,
+                          fontSize: 18.sp,
                           color: Colors.white,
                         ),
                       ),
@@ -121,9 +122,9 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                           SizedBox(width: 5.sp),
                           Text(
                             progress!,
-                            style: GoogleFonts.mulish(
+                            style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13.sp,
+                              fontSize: 15.sp,
                               color: Colors.white,
                             ),
                           ),
@@ -137,18 +138,18 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'Estado',
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
-                          fontSize: 15.sp,
+                          fontSize: 18.sp,
                           color: Colors.white,
                         ),
                       ),
                       SizedBox(height: 5.sp),
                       Text(
                         status!,
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w600,
-                          fontSize: 13.sp,
+                          fontSize: 15.sp,
                           color: Colors.white,
                         ),
                       ),
@@ -160,18 +161,18 @@ class ProyectContainerFigmaVersion extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'Valor',
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
-                          fontSize: 15.sp,
+                          fontSize: 18.sp,
                           color: Colors.white,
                         ),
                       ),
                       SizedBox(height: 5.sp),
                       Text(
                         value!,
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w600,
-                          fontSize: 13.sp,
+                          fontSize: 15.sp,
                           color: Colors.white,
                         ),
                       ),
