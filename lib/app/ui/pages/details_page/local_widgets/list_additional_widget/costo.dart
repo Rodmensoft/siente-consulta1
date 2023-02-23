@@ -1,8 +1,8 @@
-import 'package:siente_app/app/data/models/datos_proyecto.dart';
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siente_app/app/data/models/datos_proyecto.dart';
+import 'package:siente_app/app/ui/theme/color_theme.dart';
 
 class Costo extends StatelessWidget {
   const Costo({
@@ -32,7 +32,7 @@ class Costo extends StatelessWidget {
             'Presupuesto',
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w500,
-              fontSize: 12.sp,
+              fontSize: 14.sp,
               color: ColorTheme.detailsText,
             ),
           ),
@@ -40,7 +40,7 @@ class Costo extends StatelessWidget {
             detallesProyecto!.valorproyecto,
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w700,
-              fontSize: 18.sp,
+              fontSize: 20.sp,
               color: ColorTheme.detailsText,
             ),
           ),
@@ -52,7 +52,7 @@ class Costo extends StatelessWidget {
                 '\$ Proyecto',
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w600,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),
@@ -60,7 +60,7 @@ class Costo extends StatelessWidget {
                 detallesProyecto!.valorproyecto,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w400,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),
@@ -74,7 +74,7 @@ class Costo extends StatelessWidget {
                 '\$ Interventoría',
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w600,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),
@@ -82,7 +82,7 @@ class Costo extends StatelessWidget {
                 detallesProyecto!.valorinterventoria,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w400,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),

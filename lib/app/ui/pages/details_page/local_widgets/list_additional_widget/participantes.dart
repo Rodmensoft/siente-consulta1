@@ -90,7 +90,7 @@ class ParticipantsWidget extends StatelessWidget {
                   title,
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     color: ColorTheme.detailsText,
                   ),
                 ),
@@ -99,7 +99,7 @@ class ParticipantsWidget extends StatelessWidget {
                   participant,
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w400,
-                    fontSize: 13.sp,
+                    fontSize: 15.sp,
                     color: ColorTheme.detailsText,
                   ),
                 ),

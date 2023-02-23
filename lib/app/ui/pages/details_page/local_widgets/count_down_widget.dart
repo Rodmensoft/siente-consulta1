@@ -1,7 +1,7 @@
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siente_app/app/ui/theme/color_theme.dart';
 
 class CountDownWidget extends StatelessWidget {
   const CountDownWidget({
@@ -72,7 +72,7 @@ class CountDownText extends StatelessWidget {
             text!,
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w400,
-              fontSize: 10.9.sp,
+              fontSize: 12.sp,
               color: Colors.white,
             ),
           ),
@@ -101,7 +101,7 @@ class DescriptionOrangeCard extends StatelessWidget {
           'Tiempo para la entrega',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w400,
-            fontSize: 10.9.sp,
+            fontSize: 13.sp,
             color: Colors.white,
           ),
         ),

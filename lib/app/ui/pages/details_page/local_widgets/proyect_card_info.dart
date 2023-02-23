@@ -61,7 +61,7 @@ class ProjectInfoCard extends StatelessWidget {
                         title!,
                         style: GoogleFonts.montserrat(
                             fontWeight: FontWeight.w700,
-                            fontSize: 18.sp,
+                            fontSize: 20.sp,
                             color: ColorTheme.detailsText),
                       ),
                       SizedBox(height: 8.sp),
@@ -75,7 +75,7 @@ class ProjectInfoCard extends StatelessWidget {
                                 textAlign: TextAlign.justify,
                                 style: GoogleFonts.montserrat(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 11.sp,
+                                  fontSize: 14.sp,
                                   color: ColorTheme.darkOpaque,
                                 ),
                               ),
@@ -200,7 +200,7 @@ class ProjectInfoCardFooter extends StatelessWidget {
           title!,
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w400,
-            fontSize: 11.sp,
+            fontSize: 13.sp,
             color: ColorTheme.darkOpaque,
           ),
         ),
@@ -208,7 +208,7 @@ class ProjectInfoCardFooter extends StatelessWidget {
           value ?? '',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w700,
-            fontSize: 11.sp,
+            fontSize: 13.sp,
             color: ColorTheme.detailsText,
           ),
         ),

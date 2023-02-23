@@ -103,7 +103,7 @@ class RelevantDataContainer extends StatelessWidget {
                 title,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w600,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),
@@ -112,7 +112,7 @@ class RelevantDataContainer extends StatelessWidget {
                 text1,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w400,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   color: ColorTheme.detailsText,
                 ),
               ),
@@ -124,7 +124,7 @@ class RelevantDataContainer extends StatelessWidget {
                     text2,
                     style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       color: ColorTheme.detailsText,
                     ),
                   ),
@@ -138,7 +138,7 @@ class RelevantDataContainer extends StatelessWidget {
                     text3,
                     style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       color: ColorTheme.detailsText,
                     ),
                   ),

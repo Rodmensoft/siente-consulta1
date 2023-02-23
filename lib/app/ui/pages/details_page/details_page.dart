@@ -1,22 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:siente_app/app/data/models/design/drowpdown_card.dart';
 import 'package:siente_app/app/ui/pages/details_page/local_widgets/count_down_widget.dart';
 import 'package:siente_app/app/ui/pages/details_page/local_widgets/list_additional_info_card.dart';
 import 'package:siente_app/app/ui/pages/details_page/local_widgets/proyect_card_info.dart';
 import 'package:siente_app/app/ui/theme/color_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'details_controller.dart';
 
 class DetailsPage extends GetView<DetailsController> {
+  const DetailsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
         toolbarHeight: 0.sp,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Container(
         color: ColorTheme.bgScaffold,
@@ -194,7 +197,7 @@ class DropDownCardWidget extends StatelessWidget {
             title!,
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w400,
-              fontSize: 13.sp,
+              fontSize: 15.sp,
               color: ColorTheme.detailsRating,
             ),
           ),

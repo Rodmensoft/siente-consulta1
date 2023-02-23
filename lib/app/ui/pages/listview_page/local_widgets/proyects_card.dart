@@ -46,7 +46,7 @@ class ProyectCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.r),
         color: Colors.white,
       ),
-      height: 104.sp,
+      height: 144.sp,
       width: double.infinity,
       child: Column(
         children: <Widget>[
@@ -68,7 +68,7 @@ class ProyectCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        CardText(text: nombreProyecto!),
+                        CardText(text: nombreCategoria!),
                         const Expanded(child: SizedBox()),
                         CardAdditionalInfo(
                           avance: avanceProyecto,
@@ -90,8 +90,8 @@ class ProyectCard extends StatelessWidget {
                           100.sp,
                         ),
                         child: SizedBox(
-                          height: 29.sp,
-                          width: 29.sp,
+                          height: 38.sp,
+                          width: 40.sp,
                           child: Material(
                             color: colorCategoria,
                             child: GetBuilder<HomeController>(
@@ -101,13 +101,13 @@ class ProyectCard extends StatelessWidget {
                                     _.goToDetails(codigoProyecto);
                                   },
                                   child: SizedBox(
-                                    height: 29.sp,
-                                    width: 29.sp,
+                                    height: 38.sp,
+                                    width: 40.sp,
                                     child: Center(
                                       child: Icon(
                                         Icons.arrow_forward_ios,
                                         color: Colors.white,
-                                        size: 16.sp,
+                                        size: 20.sp,
                                       ),
                                     ),
                                   ),
@@ -151,8 +151,8 @@ class CardAdditionalInfo extends StatelessWidget {
           valor!,
           textAlign: TextAlign.right,
           style: GoogleFonts.montserrat(
-            fontWeight: FontWeight.w400,
-            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+            fontSize: 14.sp,
             color: Colors.black,
           ),
         ),
@@ -167,7 +167,7 @@ class CardAdditionalInfo extends StatelessWidget {
           avance!,
           style: GoogleFonts.mulish(
             fontWeight: FontWeight.w400,
-            fontSize: 12.sp,
+            fontSize: 14.sp,
             letterSpacing: 0.09.sp,
             color: Colors.black,
           ),
@@ -201,12 +201,12 @@ class CardText extends StatelessWidget {
         Expanded(
           child: Text(
             text.capitalize ?? text,
-            textAlign: TextAlign.left,
-            maxLines: 2,
+            textAlign: TextAlign.justify,
+            maxLines: 5,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w400,
-              fontSize: 10.sp,
+              fontSize: 12.5.sp,
               color: Colors.black,
             ),
           ),

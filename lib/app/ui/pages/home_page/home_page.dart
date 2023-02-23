@@ -333,7 +333,7 @@ class CategoryCard extends StatelessWidget {
                         style: GoogleFonts.mulish(
                           fontWeight: FontWeight.w700,
                           color: type ? Colors.white : const Color(0xff666666),
-                          fontSize: type ? 11.72.sp : 12.sp,
+                          fontSize: 12.sp,
                         ),
                       ),
                     ),
