@@ -35,17 +35,17 @@ class GlobalIndicatorsWidget extends StatelessWidget {
             children: <Widget>[
               Text(
                 amount,
-                style: GoogleFonts.mulish(
-                    fontWeight: FontWeight.w700,
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xff4d4d4d),
-                    fontSize: 23.91.sp),
+                    fontSize: 17.58.sp),
               ),
               Text(
                 name,
-                style: GoogleFonts.mulish(
-                    fontWeight: FontWeight.w700,
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w400,
                     color: const Color(0xff4d4d4d),
-                    fontSize: 11.72.sp),
+                    fontSize: 11.4.sp),
               ),
             ],
           ),

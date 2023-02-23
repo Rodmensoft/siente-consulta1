@@ -181,7 +181,7 @@ class CardText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-        minHeight: 67.sp,
+        minHeight: 30.sp,
       ),
       alignment: Alignment.topLeft,
       child: Row(

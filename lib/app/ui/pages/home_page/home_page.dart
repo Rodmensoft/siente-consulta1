@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:siente_app/app/assets/assets.dart';
 import 'package:siente_app/app/data/models/sample_data.dart';
-import 'package:siente_app/app/ui/global_widgets/fadein_top_edge.dart';
 import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
 import 'package:siente_app/app/ui/pages/home_page/local_widgets/page_view_button.dart';
 import 'package:siente_app/app/ui/pages/home_page/local_widgets/search_row.dart';
@@ -49,7 +48,7 @@ class HomePage extends StatelessWidget {
             }),
             SizedBox.expand(
               child: Container(
-                color: color2,
+                color: const Color(0xffF6F4FC),
               ),
             ),
             Column(
@@ -226,21 +225,19 @@ class CategoriesList extends StatelessWidget {
         return Container(
           color: Colors.transparent,
           height: 125.sp,
-          child: FadeInEdgesHorizontal(
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: _.initialCategories.length,
-              itemBuilder: (BuildContext context, int index) {
-                final CategoryData data = _.initialCategories[index];
-                return CategoryCard(
-                    data: data,
-                    index: index,
-                    type: _.type,
-                    onTap: () => _.onChangeCategory(index));
-              },
-            ),
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemCount: _.initialCategories.length,
+            itemBuilder: (BuildContext context, int index) {
+              final CategoryData data = _.initialCategories[index];
+              return CategoryCard(
+                  data: data,
+                  index: index,
+                  type: _.type,
+                  onTap: () => _.onChangeCategory(index));
+            },
           ),
         );
       },
