@@ -43,7 +43,7 @@ class HomeController extends GetxController {
   List<VistaListaConsulta> listaProyectosAux = <VistaListaConsulta>[];
   RxList<CategoryData> initialCategories = <CategoryData>[].obs;
 
-  bool type = false;
+  bool type = true;
 
   RxBool loading = true.obs;
 
@@ -113,7 +113,7 @@ class HomeController extends GetxController {
 
   void onChangePageView(int i) {
     currentPageViewIndex = i;
-    type = i == 0;
+    // type = i == 0;
     isMarkerOpened = false;
     update(<Object>['pageview_controller', 'page_view', 'categories']);
     try {
