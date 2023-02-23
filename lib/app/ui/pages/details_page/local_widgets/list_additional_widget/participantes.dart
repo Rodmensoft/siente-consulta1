@@ -1,8 +1,8 @@
-import 'package:siente_app/app/data/models/datos_proyecto.dart';
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siente_app/app/data/models/datos_proyecto.dart';
+import 'package:siente_app/app/ui/theme/color_theme.dart';
 
 class Participantes extends StatelessWidget {
   const Participantes({
@@ -83,27 +83,29 @@ class ParticipantsWidget extends StatelessWidget {
               height: 30.sp,
             ),
             SizedBox(width: 30.sp),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  title,
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14.sp,
-                    color: ColorTheme.detailsText,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.sp,
+                      color: ColorTheme.detailsText,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5.sp),
-                Text(
-                  participant,
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15.sp,
-                    color: ColorTheme.detailsText,
+                  SizedBox(height: 5.sp),
+                  Text(
+                    participant,
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15.sp,
+                      color: ColorTheme.detailsText,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ));

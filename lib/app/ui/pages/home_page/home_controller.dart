@@ -172,7 +172,7 @@ class HomeController extends GetxController {
             color: e.codigocategoria == 0
                 ? ColorTheme.newButton1
                 : e.colorCategoria,
-            name: e.formattedNombreCat,
+            name: e.nombrecategoria,
             height: 20,
             width: 20,
             isSelected: e.codigocategoria == 0 ? true : e.isSelected,

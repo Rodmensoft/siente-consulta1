@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:siente_app/app/data/models/remote/indicadores_globales.dart';
 
 class SummaryData {
@@ -57,31 +56,4 @@ class CategoryData {
   int? codigoCategoria;
   IndicadoresGlobales? indicadoresGlobales;
   GlobalKey key;
-
-  String get nombreCamelCase {
-    if (name != null) {
-      String capitalize = name!.capitalize ?? '';
-      return capitalizeExceptConnectors(capitalize);
-    }
-    return '';
-  }
-}
-
-String capitalizeExceptConnectors(String input) {
-  final List<String> connectors = ['de', 'del'];
-  final List<String> words = input.split(' ');
-
-  String result = '';
-  for (int i = 0; i < words.length; i++) {
-    if (connectors.contains(words[i].toLowerCase()) && i != 0) {
-      result += words[i].toLowerCase();
-    } else {
-      result += ' ${words[i].capitalize!} ';
-    }
-  }
-
-  return result
-      .replaceAll('Paz', '\nPAZ')
-      .replaceAll('  ', '')
-      .replaceAll('Sanandrés', 'San\nAndrés');
 }

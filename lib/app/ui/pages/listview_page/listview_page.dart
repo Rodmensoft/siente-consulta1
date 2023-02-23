@@ -22,16 +22,8 @@ class ListViewPage extends GetView<ListViewController> {
             itemBuilder: (BuildContext context, int index) {
               final VistaListaConsulta data = _.listaProyectos[index];
               return ProyectCard(
+                data: data,
                 index: index,
-                codigoProyecto: data.codigoproyecto,
-                avanceProyecto: data.avanceproyecto,
-                imagenCategoria: data.urlImageCategoria,
-                nombreProyecto: data.nombreproyecto,
-                nombreCategoria: data.formattedNombreCat,
-                valorProyecto: data.valorproyecto,
-                distanciaProyecto: data.distaciaproyecto,
-                colorCategoria: data.colorCategoria,
-                semaforo: data.semaforoproyecto,
               );
             },
           ),

@@ -50,7 +50,7 @@ class DatosRelevantes extends StatelessWidget {
           withOpacity: withOpacity,
           icon: 'assets/new/details/category.png',
           title: 'Tipo',
-          text1: detallesProyecto!.formattedNombreCat,
+          text1: detallesProyecto!.nombrecategoria,
           text2: '',
           text3: '',
         ),

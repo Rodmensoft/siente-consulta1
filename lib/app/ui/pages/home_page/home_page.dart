@@ -326,14 +326,12 @@ class CategoryCard extends StatelessWidget {
                         color: type ? Colors.transparent : Colors.white,
                       ),
                       child: Text(
-                        type
-                            ? data.nombreCamelCase
-                            : data.nombreCamelCase.toUpperCase(),
+                        type ? data.name! : data.name!.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
                           color: type ? Colors.white : const Color(0xff666666),
-                          fontSize: 12.sp,
+                          fontSize: 11.sp,
                         ),
                       ),
                     ),

@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../main.dart';
-import '../sample_data.dart';
 
 VistaListaConsulta vistaConsultaFromJson(String str) {
   return VistaListaConsulta.fromJson(json.decode(str) as Map<String, dynamic>);
@@ -118,9 +117,6 @@ class VistaListaConsulta {
   Future<BitmapDescriptor> iconBitmap() => BitmapDescriptor.fromAssetImage(
       ImageConfiguration(size: Size(48.sp, 48.sp)),
       'assets/new/home/marker_$codigocategoria.png');
-
-  String get formattedNombreCat =>
-      capitalizeExceptConnectors(nombrecategoria ?? '');
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{

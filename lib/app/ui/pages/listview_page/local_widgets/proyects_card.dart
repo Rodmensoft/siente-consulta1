@@ -7,31 +7,17 @@ import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
 import 'package:siente_app/app/ui/theme/color_theme.dart';
 
 import '../../../../assets/assets.dart';
+import '../../../../data/models/remote/vista_lista.dart';
 
 class ProyectCard extends StatelessWidget {
   const ProyectCard({
     Key? key,
-    required this.avanceProyecto,
-    required this.colorCategoria,
-    required this.distanciaProyecto,
-    required this.imagenCategoria,
     required this.index,
-    required this.nombreCategoria,
-    required this.nombreProyecto,
-    required this.semaforo,
-    required this.valorProyecto,
-    required this.codigoProyecto,
+    required this.data,
   }) : super(key: key);
-  final Color? colorCategoria;
-  final int? index;
-  final int? codigoProyecto;
-  final String? avanceProyecto;
-  final String? distanciaProyecto;
-  final String? imagenCategoria;
-  final String? nombreCategoria;
-  final String? nombreProyecto;
-  final String? semaforo;
-  final String? valorProyecto;
+
+  final VistaListaConsulta data;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -46,83 +32,80 @@ class ProyectCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.r),
         color: Colors.white,
       ),
-      height: 144.sp,
       width: double.infinity,
       child: Column(
         children: <Widget>[
           CardTitleDistance(
-            color: colorCategoria!,
-            distance: distanciaProyecto!,
-            image: imagenCategoria!,
-            title: nombreCategoria!,
+            color: data.colorCategoria,
+            distance: data.distaciaproyecto.toString(),
+            image: data.urlImageCategoria!,
+            title: data.nombrecategoria!,
           ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(width: 14.sp),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 8.sp),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        CardText(text: nombreCategoria!),
-                        const Expanded(child: SizedBox()),
-                        CardAdditionalInfo(
-                          avance: avanceProyecto,
-                          semaforo: semaforo,
-                          valor: valorProyecto,
-                        ),
-                        SizedBox(height: 12.sp),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10.sp),
-                SizedBox(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(width: 14.sp),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: 8.sp),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                          100.sp,
-                        ),
-                        child: SizedBox(
-                          height: 38.sp,
-                          width: 40.sp,
-                          child: Material(
-                            color: colorCategoria,
-                            child: GetBuilder<HomeController>(
-                              builder: (_) {
-                                return InkWell(
-                                  onTap: () {
-                                    _.goToDetails(codigoProyecto);
-                                  },
-                                  child: SizedBox(
-                                    height: 38.sp,
-                                    width: 40.sp,
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: Colors.white,
-                                        size: 20.sp,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
+                      CardText(text: data.nombreproyecto!),
+                      SizedBox(height: 10.sp),
+                      CardAdditionalInfo(
+                        avance: data.avanceproyecto,
+                        semaforo: data.semaforoproyecto,
+                        valor: data.valorproyecto,
                       ),
+                      SizedBox(height: 12.sp),
                     ],
                   ),
                 ),
-                SizedBox(width: 20.sp),
-              ],
-            ),
+              ),
+              SizedBox(width: 10.sp),
+              SizedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        100.sp,
+                      ),
+                      child: SizedBox(
+                        height: 38.sp,
+                        width: 40.sp,
+                        child: Material(
+                          color: data.colorCategoria,
+                          child: GetBuilder<HomeController>(
+                            builder: (_) {
+                              return InkWell(
+                                onTap: () {
+                                  _.goToDetails(data.codigoproyecto);
+                                },
+                                child: SizedBox(
+                                  height: 38.sp,
+                                  width: 40.sp,
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: Colors.white,
+                                      size: 20.sp,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(width: 20.sp),
+            ],
           ),
         ],
       ),
@@ -196,23 +179,27 @@ class CardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: Text(
-            text.capitalize ?? text,
-            textAlign: TextAlign.justify,
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w400,
-              fontSize: 12.5.sp,
-              color: Colors.black,
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: 67.sp,
+      ),
+      alignment: Alignment.topLeft,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Text(
+              text,
+              textAlign: TextAlign.justify,
+              style: GoogleFonts.montserrat(
+                fontWeight: FontWeight.w400,
+                fontSize: 12.5.sp,
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-        SizedBox(width: 20.sp),
-      ],
+          SizedBox(width: 20.sp),
+        ],
+      ),
     );
   }
 }
@@ -274,7 +261,7 @@ class CardTitleDistance extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          const Expanded(child: SizedBox()),
+          const Spacer(),
           Text(
             distance,
             style: GoogleFonts.mulish(

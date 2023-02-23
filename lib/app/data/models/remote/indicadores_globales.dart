@@ -3,8 +3,6 @@ import 'dart:ui';
 
 import 'package:intl/intl.dart';
 
-import '../sample_data.dart';
-
 List<IndicadoresGlobales> indicadoresGlobalesFromJsonList(String str) =>
     List<IndicadoresGlobales>.from(
         json.decode(str).map((x) => IndicadoresGlobales.fromJson(x)));
@@ -181,9 +179,6 @@ class IndicadoresGlobales {
     final String avanceGlobal = totalavanceproyectos!.toStringAsFixed(2);
     return '$avanceGlobal%';
   }
-
-  String get formattedNombreCat =>
-      capitalizeExceptConnectors(nombrecategoria ?? '');
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{

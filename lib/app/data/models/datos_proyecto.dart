@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
-import 'package:siente_app/app/data/models/sample_data.dart';
 import 'package:siente_app/app/ui/utils/time_left.dart';
 import 'package:siente_app/main.dart';
 
@@ -227,8 +226,6 @@ class DatosProyecto {
 
     return inicioProyecto;
   }
-
-  String get formattedNombreCat => capitalizeExceptConnectors(nombrecategoria);
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'avanceproyecto': avanceproyecto,
