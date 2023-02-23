@@ -74,7 +74,7 @@ class HomeController extends GetxController {
   final Color _clusterTextColor = Colors.white;
   final Color _clusterColor = ColorTheme.primaryTint;
 
-  bool isMarkerOpened = false;
+  RxBool isMarkerOpened = false.obs;
   @override
   void onReady() {
     super.onReady();
@@ -114,7 +114,7 @@ class HomeController extends GetxController {
   void onChangePageView(int i) {
     currentPageViewIndex = i;
     // type = i == 0;
-    isMarkerOpened = false;
+    isMarkerOpened.value = false;
     update(<Object>['pageview_controller', 'page_view', 'categories']);
     try {
       getMarkers();
@@ -508,12 +508,12 @@ class HomeController extends GetxController {
 
   Future<void> openProyectByMarker(VistaListaConsulta item) async {
     proyectoMapa = item;
-    isMarkerOpened = true;
+    isMarkerOpened.value = true;
     update(<Object>['map_view']);
   }
 
   void onSearchTap() {
-    isMarkerOpened = false;
+    isMarkerOpened.value = false;
 
     searchFocus.requestFocus();
     update(<Object>['search_field']);
