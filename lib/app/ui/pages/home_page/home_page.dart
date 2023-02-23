@@ -330,7 +330,7 @@ class CategoryCard extends StatelessWidget {
                             ? data.nombreCamelCase
                             : data.nombreCamelCase.toUpperCase(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
                           color: type ? Colors.white : const Color(0xff666666),
                           fontSize: 12.sp,

@@ -80,5 +80,8 @@ String capitalizeExceptConnectors(String input) {
     }
   }
 
-  return result.replaceAll('Paz', ' PAZ').replaceAll('  ', '');
+  return result
+      .replaceAll('Paz', '\nPAZ')
+      .replaceAll('  ', '')
+      .replaceAll('Sanandrés', 'San\nAndrés');
 }
