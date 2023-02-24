@@ -148,7 +148,7 @@ class CardAdditionalInfo extends StatelessWidget {
         SizedBox(width: 9.sp),
         Text(
           avance!,
-          style: GoogleFonts.mulish(
+          style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w400,
             fontSize: 14.sp,
             letterSpacing: 0.09.sp,
@@ -255,7 +255,7 @@ class CardTitleDistance extends StatelessWidget {
           SizedBox(width: 13.sp),
           Text(
             title,
-            style: GoogleFonts.mulish(
+            style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w700,
               fontSize: 14.sp,
               color: Colors.white,
@@ -264,7 +264,7 @@ class CardTitleDistance extends StatelessWidget {
           const Spacer(),
           Text(
             distance,
-            style: GoogleFonts.mulish(
+            style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w700,
               fontSize: 14.sp,
               color: Colors.white,

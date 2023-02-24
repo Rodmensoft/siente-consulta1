@@ -45,11 +45,11 @@ class SearchRow extends StatelessWidget {
                 imageIcon: 'assets/new/login/search_circle.png',
                 keyboardType: TextInputType.text,
                 onEditingComplete: () => _.onSearch(),
-                style: GoogleFonts.mulish(
+                style: GoogleFonts.montserrat(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
-                  fontSize: 13.sp,
+                  fontSize: 14.sp,
                 ),
                 onTap: _.onSearchTap,
               );

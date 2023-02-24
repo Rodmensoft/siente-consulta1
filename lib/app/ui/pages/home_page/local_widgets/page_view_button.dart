@@ -47,9 +47,9 @@ class PageViewButton extends StatelessWidget {
               ),
               SizedBox(width: 10.86.sp),
               Text(
-                text ?? '',
-                style: GoogleFonts.mulish(
-                  fontSize: 11.sp,
+                text!.toUpperCase(),
+                style: GoogleFonts.montserrat(
+                  fontSize: 11.5.sp,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),

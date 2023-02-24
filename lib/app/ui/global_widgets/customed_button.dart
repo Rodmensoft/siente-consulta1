@@ -39,6 +39,7 @@ class CustomedButton extends StatelessWidget {
     required this.text,
     required this.text2,
     this.bgColor,
+    this.fontSize,
   }) : super(key: key);
   final Function()? onPressed;
   final bool loading;
@@ -48,6 +49,7 @@ class CustomedButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? bgColor;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,8 @@ class CustomedButton extends StatelessWidget {
               else
                 Text(
                   text ?? '',
-                  style: TextStyleTheme.textButtons,
+                  style: TextStyleTheme.textButtons.copyWith(
+                      fontSize: fontSize, fontWeight: FontWeight.w900),
                 )
             ],
           ),

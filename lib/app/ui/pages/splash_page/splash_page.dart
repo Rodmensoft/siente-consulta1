@@ -40,37 +40,65 @@ class TopSlogan extends StatelessWidget {
       tag: 'top_slogan',
       child: Material(
         color: Colors.transparent,
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-          // mainAxisAlignment: MainAxisAlignment.,
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
           children: [
-            Center(
-              child: Stack(
-                children: [
-                  LogoImage(
-                    width: 104.24.sp,
-                    height: 85.39.sp,
+            Column(
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              // mainAxisAlignment: MainAxisAlignment.,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Stack(
+                    children: [
+                      LogoImage(
+                        width: 104.24.sp,
+                        height: 85.39.sp,
+                      ),
+                    ],
                   ),
-                ],
+                ),
+                SizedBox(height: 25.32.sp),
+                Image.asset(
+                  Assets.assetsNewSplashSiente,
+                  width: 189.66.sp,
+                  height: 50.05,
+                ),
+                SizedBox(height: 11.32.sp),
+                Text(
+                  'Sistema de Informacion Estrategico\npara la Nacion y el Territorio',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13.08.sp,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            Positioned(
+              right: 0,
+              left: 0,
+              top: 80.sp,
+              child: Container(
+                alignment: Alignment.center,
+                child: Container(
+                  margin: EdgeInsets.only(left: 90.sp),
+                  padding: EdgeInsets.all(4.sp),
+                  decoration: BoxDecoration(
+                    color: const Color(0xff52B4A6),
+                    borderRadius: BorderRadius.circular(50.r),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: const Text(
+                    '\t\t\tAPP\t\t\t',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
-            ),
-            SizedBox(height: 25.32.sp),
-            Image.asset(
-              Assets.assetsNewSplashSiente,
-              width: 189.66.sp,
-              height: 50.05,
-            ),
-            SizedBox(height: 11.32.sp),
-            Text(
-              'Sistema de Informacion Estrategico\npara la Nacion y el Territorio',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w400,
-                fontSize: 13.08.sp,
-                color: Colors.white,
-              ),
-            ),
+            )
           ],
         ),
       ),

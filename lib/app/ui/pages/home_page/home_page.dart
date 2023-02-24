@@ -137,7 +137,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 ),
                 Text(
                   'Dashboard',
-                  style: GoogleFonts.mulish(
+                  style: GoogleFonts.montserrat(
                     fontSize: 12.sp,
                     color: ColorTheme.primaryTint,
                   ),
@@ -159,7 +159,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ),
                       Text(
                         'Logout',
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.montserrat(
                           fontSize: 12.sp,
                           color: ColorTheme.medium,
                         ),
@@ -323,7 +323,9 @@ class CategoryCard extends StatelessWidget {
                         color: type ? Colors.transparent : Colors.white,
                       ),
                       child: Text(
-                        type ? data.name! : data.name!.toUpperCase(),
+                        type
+                            ? data.name!.toUpperCase()
+                            : data.name!.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
