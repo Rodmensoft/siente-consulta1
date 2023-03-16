@@ -1,4 +1,4 @@
-package com.example.siente_app
+package com.interkont.siente
 
 import io.flutter.embedding.android.FlutterActivity
 
