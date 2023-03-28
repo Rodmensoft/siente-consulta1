@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_like_css/gradient_like_css.dart';
 
 class ColorTheme {
   static const Color primary = Color(0xff575A9D);
@@ -50,21 +49,17 @@ class ColorTheme {
   static const Color newButton5 = Color(0xff159687);
   static const Color newButton6 = Color(0xffE49804);
 
-  static LinearGradient splashGradient =
-      linearGradient(168.03, ['#575A9D -0.6%', '#002F5E 100%']);
+  static LinearGradient splashGradient = const LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: [0.004, 1],
+    colors: [
+      Color(0xFF002F5E),
+      Color(0xFF575A9D),
+    ],
+    transform: GradientRotation(168.03 * (3.141592 / 180)),
+  );
 
-  //  LinearGradient(
-  //   stops: <double>[0.0, 0.4234],
-  //   transform: GradientRotation(2.9515263),
-  //   begin: Alignment(103.5, 448),
-  //   end: Alignment(310.5, 448),
-  //   tileMode: TileMode.mirror,
-  //   colors: <Color>[
-  //     Color(0xff9A88FF),
-  //     ColorTheme.primaryTint,
-  //   ],
-  // );
-  static LinearGradient backgroundGradient = splashGradient;
   static const LinearGradient congratsGradient = LinearGradient(
     stops: <double>[-0.6, 1.0],
     begin: Alignment.topLeft,

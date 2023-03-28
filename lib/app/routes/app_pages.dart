@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:siente_app/app/bindings/imagedetail_binding.dart';
 import 'package:siente_app/app/routes/app_routes.dart';
 import 'package:siente_app/app/ui/pages/details_page/details_binding.dart';
@@ -11,25 +12,24 @@ import 'package:siente_app/app/ui/pages/login_page/login_page.dart';
 import 'package:siente_app/app/ui/pages/mapview_page/mapview_binding.dart';
 import 'package:siente_app/app/ui/pages/splash_page/splash_binding.dart';
 import 'package:siente_app/app/ui/pages/splash_page/splash_page.dart';
-import 'package:get/get.dart';
 
 class AppPages {
   static final List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
     GetPage<dynamic>(
       name: AppRoutes.splash,
-      page: () => SplashPage(),
+      page: () => const SplashPage(),
       binding: SplashBinding(),
     ),
     GetPage<dynamic>(
       name: AppRoutes.login,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
       binding: LoginBinding(),
       transition: Transition.topLevel,
       transitionDuration: const Duration(milliseconds: 1500),
     ),
     GetPage<dynamic>(
       name: AppRoutes.home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       bindings: <Bindings>[
         HomeBinding(),
         MapViewBinding(),
@@ -40,14 +40,14 @@ class AppPages {
     ),
     GetPage<dynamic>(
       name: AppRoutes.details,
-      page: () => DetailsPage(),
+      page: () => const DetailsPage(),
       binding: DetailsBinding(),
       transition: Transition.topLevel,
       transitionDuration: const Duration(milliseconds: 600),
     ),
     GetPage<dynamic>(
       name: AppRoutes.imageDetails,
-      page: () => ImageDetailPage(),
+      page: () => const ImageDetailPage(),
       binding: ImageDetailBinding(),
       transition: Transition.topLevel,
       transitionDuration: const Duration(milliseconds: 600),

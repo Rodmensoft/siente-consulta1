@@ -7,8 +7,8 @@ import 'package:siente_app/app/ui/global_widgets/customed_textfield.dart';
 import 'package:siente_app/app/ui/global_widgets/logo.dart';
 import 'package:siente_app/app/ui/pages/login_page/local_widgets/failed_message.dart';
 import 'package:siente_app/app/ui/pages/login_page/login_controller.dart';
-import 'package:siente_app/app/ui/theme/color_theme.dart';
 
+import '../../theme/color_theme.dart';
 import '../splash_page/splash_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
         height: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 32.sp),
         decoration: BoxDecoration(
-          gradient: ColorTheme.backgroundGradient,
+          gradient: ColorTheme.splashGradient,
         ),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),

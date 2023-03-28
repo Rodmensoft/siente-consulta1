@@ -118,7 +118,9 @@ class HomeController extends GetxController {
     update(<Object>['pageview_controller', 'page_view', 'categories']);
     try {
       getMarkers();
-    } catch (e) {}
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   Future<void> onChangeCategory(int index) async {

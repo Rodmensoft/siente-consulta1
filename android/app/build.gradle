@@ -76,6 +76,7 @@ android {
                 'proguard-rules.pro'
         }
     }
+    namespace 'com.interkont.siente'
 }
 
 flutter {

@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:get/get.dart';
 import 'package:siente_app/app/data/models/datos_proyecto.dart';
 import 'package:siente_app/app/data/models/design/drowpdown_card.dart';
 import 'package:siente_app/app/ui/utils/time_left.dart';
-import 'package:get/get.dart';
 
 class DetailsController extends GetxController {
   DatosProyecto? detallesProyecto = Get.arguments as DatosProyecto?;
@@ -15,14 +15,12 @@ class DetailsController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     _startTimer();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
     closeAllDropDowns();
     _timer.cancel();

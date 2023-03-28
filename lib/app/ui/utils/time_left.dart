@@ -3,10 +3,10 @@ class TimeLeft {
     required DateTime now,
     required DateTime limit,
   }) {
-    final int _daysUntil = dateBetween(now, limit).inDays;
-    if (_daysUntil < 0) return 0;
+    final int daysUntil = dateBetween(now, limit).inDays;
+    if (daysUntil < 0) return 0;
 
-    return _daysUntil;
+    return daysUntil;
   }
 
   int hoursLeft({
@@ -14,9 +14,9 @@ class TimeLeft {
     required DateTime limit,
     required int daysLeft,
   }) {
-    final int _hoursLeft = dateBetween(now, limit).inHours - (daysLeft * 24);
-    if (_hoursLeft < 0) return 0;
-    return _hoursLeft;
+    final int hoursLeft = dateBetween(now, limit).inHours - (daysLeft * 24);
+    if (hoursLeft < 0) return 0;
+    return hoursLeft;
   }
 
   int minutesLeft({
@@ -25,11 +25,11 @@ class TimeLeft {
     required int daysLeft,
     required int hourLeft,
   }) {
-    final int _minutesLeft = dateBetween(now, limit).inMinutes -
+    final int minutesLeft = dateBetween(now, limit).inMinutes -
         (daysLeft * 1440 /*24*60*/) -
         (hourLeft * 60);
-    if (_minutesLeft < 0) return 0;
-    return _minutesLeft;
+    if (minutesLeft < 0) return 0;
+    return minutesLeft;
   }
 
   int secondsLeft({
@@ -39,12 +39,12 @@ class TimeLeft {
     required int hourLeft,
     required int minuteLeft,
   }) {
-    final int _secondsLeft = dateBetween(now, limit).inSeconds -
+    final int secondsLeft = dateBetween(now, limit).inSeconds -
         (daysLeft * 86400 /*24*60*60*/) -
         (hourLeft * 3600) -
         (minuteLeft * 60);
-    if (_secondsLeft < 0) return 0;
-    return _secondsLeft; 
+    if (secondsLeft < 0) return 0;
+    return secondsLeft;
   }
 
   Duration dateBetween(DateTime now, DateTime limit) {

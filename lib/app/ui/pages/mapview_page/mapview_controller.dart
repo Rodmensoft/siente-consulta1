@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:siente_app/app/ui/pages/home_page/home_controller.dart';
 
 class MapViewController extends GetxController {
   late CameraPosition initGMapPosition;
@@ -11,7 +11,6 @@ class MapViewController extends GetxController {
   final HomeController _homeCtrl = Get.find<HomeController>();
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     initGMapPosition = const CameraPosition(
       target: LatLng(0.0, 0.0),
@@ -20,7 +19,6 @@ class MapViewController extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onInit
     super.onClose();
     // ignore: always_specify_types
     HomeController.gmapController = Completer();
@@ -41,9 +39,9 @@ class MapViewController extends GetxController {
 
   Future<void> goToCurrentPosition() async {
     // ignore: alw ays_specify_types
-    final GoogleMapController _controller =
+    final GoogleMapController controller =
         await HomeController.gmapController.future;
-    await _controller.animateCamera(
+    await controller.animateCamera(
       CameraUpdate.newLatLngBounds(_homeCtrl.bounds, 80),
     );
   }

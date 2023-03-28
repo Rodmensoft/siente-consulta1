@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,10 +16,6 @@ class DetailsPage extends GetView<DetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0.sp,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
       body: Container(
         color: ColorTheme.bgScaffold,
         height: double.infinity,
@@ -40,55 +35,63 @@ class DetailsPage extends GetView<DetailsController> {
                         bottomRight: Radius.circular(10.r),
                       ),
                     ),
-                    padding: EdgeInsets.only(bottom: 17.sp),
                     width: double.infinity,
-                    child: Row(
-                      children: <Widget>[
-                        IconButton(
-                            onPressed: () => Get.back(),
-                            icon: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.white,
-                              size: 22.sp,
-                            ))
-                      ],
-                    ),
                   ),
-                  SizedBox(
-                    height: double.infinity,
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 75.sp),
-                        ProjectInfoCard(
-                          image: controller.detallesProyecto!.urlImageProyecto,
-                          title: controller.detallesProyecto!.nombreproyecto,
-                          text: controller.detallesProyecto!.objetoproyecto,
-                          budget: controller.detallesProyecto!.valorproyecto,
-                          status: controller.detallesProyecto!.estadoproyecto,
-                          progress: controller.detallesProyecto!.avanceproyecto,
-                        ),
-                        SizedBox(height: 15.sp),
-                        GetBuilder<DetailsController>(
-                          id: 'count_down',
-                          builder: (_) {
-                            return CountDownWidget(
-                                days: '${_.days}',
-                                hours: '${_.hours}',
-                                minutes: '${_.minutes}',
-                                seconds: '${_.seconds}');
-                          },
-                        ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
-                            child: Column(
-                              children: const <Widget>[
-                                MoreDetailedInfoList(),
-                              ],
+                  SafeArea(
+                    child: SizedBox(
+                      height: double.infinity,
+                      child: Column(
+                        children: <Widget>[
+                          // SizedBox(height: 75.sp),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      IconButton(
+                                          onPressed: () => Get.back(),
+                                          icon: Icon(
+                                            Icons.arrow_back_ios,
+                                            color: Colors.white,
+                                            size: 22.sp,
+                                          ))
+                                    ],
+                                  ),
+                                  SizedBox(height: 15.sp),
+                                  ProjectInfoCard(
+                                    image: controller
+                                        .detallesProyecto!.urlImageProyecto,
+                                    title: controller
+                                        .detallesProyecto!.nombreproyecto,
+                                    text: controller
+                                        .detallesProyecto!.objetoproyecto,
+                                    budget: controller
+                                        .detallesProyecto!.valorproyecto,
+                                    status: controller
+                                        .detallesProyecto!.estadoproyecto,
+                                    progress: controller
+                                        .detallesProyecto!.avanceproyecto,
+                                  ),
+                                  SizedBox(height: 15.sp),
+                                  GetBuilder<DetailsController>(
+                                    id: 'count_down',
+                                    builder: (_) {
+                                      return CountDownWidget(
+                                          days: '${_.days}',
+                                          hours: '${_.hours}',
+                                          minutes: '${_.minutes}',
+                                          seconds: '${_.seconds}');
+                                    },
+                                  ),
+                                  const MoreDetailedInfoList(),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

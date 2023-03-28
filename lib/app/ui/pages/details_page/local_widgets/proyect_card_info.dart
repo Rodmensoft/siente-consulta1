@@ -127,6 +127,38 @@ class ProjectInfoCard extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 50.sp,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            SizedBox(width: 12.sp),
+                            ProjectInfoCardFooter(
+                              title: 'Presupuesto',
+                              value: budget,
+                            ),
+                            Container(
+                              height: double.infinity,
+                              width: 0.3.sp,
+                              color: ColorTheme.detailsLine,
+                            ),
+                            ProjectInfoCardFooter(
+                              title: 'Estado',
+                              value: status,
+                            ),
+                            Container(
+                              height: double.infinity,
+                              width: 0.3.sp,
+                              color: ColorTheme.detailsLine,
+                            ),
+                            ProjectInfoCardFooter(
+                              title: 'Avance',
+                              value: progress,
+                            ),
+                            SizedBox(width: 49.sp),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -143,38 +175,6 @@ class ProjectInfoCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          SizedBox(
-            height: 50.sp,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SizedBox(width: 12.sp),
-                ProjectInfoCardFooter(
-                  title: 'Presupuesto',
-                  value: budget,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 0.3.sp,
-                  color: ColorTheme.detailsLine,
-                ),
-                ProjectInfoCardFooter(
-                  title: 'Estado',
-                  value: status,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 0.3.sp,
-                  color: ColorTheme.detailsLine,
-                ),
-                ProjectInfoCardFooter(
-                  title: 'Avance',
-                  value: progress,
-                ),
-                SizedBox(width: 49.sp),
-              ],
-            ),
           ),
         ],
       ),
